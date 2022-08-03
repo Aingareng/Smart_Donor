@@ -43,7 +43,7 @@ const Login: React.FC = () => {
         <div className='bg-white shadow-md shadow-gray-300 mt-[10px]  w-[90%] rounded-md p-[15px] box-border mobile-s:w-[100%]'>
           <p className='font-Quicksand text-center font-semibold text-teal-700'>Login Ke Halaman</p>
           <form onSubmit={handleLogin} className='p-[5px] flex justify-center flex-col items-center'>
-            <input className='w-[90%] h-[40px] my-[5px]  focus:outline-none bg-slate-100 px-[5px] py-10px] rounded-md ' type="email" name="" id="email" onChange={(e) => setEmail(e.target.value)} placeholder='Email atau Nomor Telepon ' />
+            <input className='w-[90%] h-[40px] my-[5px]  focus:outline-none bg-slate-100 px-[5px] py-10px] rounded-md ' type="email" name="" id="email" onChange={(e) => setEmail(e.target.value)} placeholder='Email' />
             <input className='w-[90%] h-[40px] my-[5px]  focus:outline-none bg-slate-100 px-[5px] py-10px] rounded-md' type="password" name="" id="password" onChange={(e) => setPassword(e.target.value)} placeholder='Password ' />
             <input className='w-[90%] h-[40px] mt-[10px] text-white font-Quicksand my-[5px] bg-teal-500 px-[5px] rounded-md duration-200 ease-in hover:bg-teal-800 cursor-pointer' type="submit" value="Masuk" />
           </form>

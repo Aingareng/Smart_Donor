@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginUser = exports.donorUser = exports.saveUser = void 0;
+exports.donorTable = exports.loginUser = exports.donorUser = exports.saveUser = void 0;
 const user_1 = __importDefault(require("../models/user"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const saveUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -64,7 +64,7 @@ exports.loginUser = loginUser;
 const donorUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const users = yield user_1.default.find();
-        res.json({ users });
+        res.send(users);
     }
     catch (error) {
         console.error(error);
@@ -72,3 +72,25 @@ const donorUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.donorUser = donorUser;
+const donorTable = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let bloodGroup = {
+        bloodA: [''],
+        bloodB: [''],
+        bloodAB: [''],
+        bloodO: ['']
+    };
+    const { bloodA, bloodB, bloodAB, bloodO } = bloodGroup;
+    try {
+        const users = yield user_1.default.find();
+        users.map((result) => {
+            const { bloodType, firstName } = result;
+            if (bloodType === "A") {
+                res.send(firstName);
+            }
+        });
+    }
+    catch (error) {
+        res.send("error");
+    }
+});
+exports.donorTable = donorTable;

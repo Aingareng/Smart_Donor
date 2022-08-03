@@ -2,7 +2,7 @@
 import User from "../models/user";
 import bcrypt from "bcrypt";
 import { Request, Response } from "express";
-import { createScanner } from "typescript";
+import user from "../models/user";
 
 
 
@@ -56,10 +56,10 @@ const loginUser = async (req: Request, res: Response) => {
   })
 }
 
-const donorUser: any = async (req: any, res: any) => {
+const donorUser: any = async (req: Request, res: Response) => {
   try {
     const users: any = await User.find()
-    res.json({ users })
+    res.send(users)
   } catch (error: any) {
     console.error(error);
 
@@ -67,5 +67,30 @@ const donorUser: any = async (req: any, res: any) => {
   }
 }
 
+const donorTable = async (req: Request, res: Response) => {
+  let bloodGroup = {
+    bloodA: [''],
+    bloodB: [''],
+    bloodAB: [''],
+    bloodO: ['']
+  }
 
-export { saveUser, donorUser, loginUser }
+  const { bloodA, bloodB, bloodAB, bloodO } = bloodGroup
+  try {
+    const users = await User.find()
+    users.map((result) => {
+      const { bloodType, firstName } = result
+      if (bloodType === "A") {
+        res.send(firstName)
+      }
+    })
+
+  } catch (error) {
+    res.send("error")
+  }
+}
+
+
+
+
+export { saveUser, donorUser, loginUser, donorTable }

@@ -9,4 +9,5 @@ const route = express_1.default.Router();
 route.post('/register', userController_1.saveUser);
 route.post('/login', userController_1.loginUser);
 route.get('/', userController_1.donorUser);
+route.get('/donor', userController_1.donorUser);
 exports.default = route;
