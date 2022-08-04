@@ -68,26 +68,11 @@ const donorUser: any = async (req: Request, res: Response) => {
 }
 
 const donorTable = async (req: Request, res: Response) => {
-  let bloodGroup = {
-    bloodA: [''],
-    bloodB: [''],
-    bloodAB: [''],
-    bloodO: ['']
-  }
+  const userItem = []
+  const userBloodRequest = await User.find({ bloodType: req.body.bloodType })
+  userItem.push(...userBloodRequest)
+  res.send(userItem)
 
-  const { bloodA, bloodB, bloodAB, bloodO } = bloodGroup
-  try {
-    const users = await User.find()
-    users.map((result) => {
-      const { bloodType, firstName } = result
-      if (bloodType === "A") {
-        res.send(firstName)
-      }
-    })
-
-  } catch (error) {
-    res.send("error")
-  }
 }
 
 

@@ -73,24 +73,9 @@ const donorUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.donorUser = donorUser;
 const donorTable = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let bloodGroup = {
-        bloodA: [''],
-        bloodB: [''],
-        bloodAB: [''],
-        bloodO: ['']
-    };
-    const { bloodA, bloodB, bloodAB, bloodO } = bloodGroup;
-    try {
-        const users = yield user_1.default.find();
-        users.map((result) => {
-            const { bloodType, firstName } = result;
-            if (bloodType === "A") {
-                res.send(firstName);
-            }
-        });
-    }
-    catch (error) {
-        res.send("error");
-    }
+    const userItem = [];
+    const userBloodRequest = yield user_1.default.find({ bloodType: req.body.bloodType });
+    userItem.push(...userBloodRequest);
+    res.send(userItem);
 });
 exports.donorTable = donorTable;

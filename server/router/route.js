@@ -10,4 +10,5 @@ route.post('/register', userController_1.saveUser);
 route.post('/login', userController_1.loginUser);
 route.get('/', userController_1.donorUser);
 route.get('/donor', userController_1.donorUser);
+route.post('/donor', userController_1.donorTable);
 exports.default = route;

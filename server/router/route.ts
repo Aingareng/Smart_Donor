@@ -6,5 +6,6 @@ route.post('/register', saveUser)
 route.post('/login', loginUser)
 route.get('/', donorUser)
 route.get('/donor', donorUser)
+route.post('/donor', donorTable)
 
 export default route
