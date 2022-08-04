@@ -20,7 +20,7 @@ const Card: React.FC = () => {
     axios.get('http://localhost:8080/user ')
       .then(res => {
         // eslint-disable-next-line array-callback-return
-        res.data.users.map((result: any) => {
+        res.data.map((result: any) => {
           if (result.bloodType === 'A') {
             setBloodA(type.typeA += 1)
           } else if (result.bloodType === 'B') {

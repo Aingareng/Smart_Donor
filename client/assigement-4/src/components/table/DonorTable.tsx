@@ -1,83 +1,104 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
-import React, { useEffect, useState } from 'react'
+import React, { SyntheticEvent, useEffect, useState } from 'react'
 import axios from 'axios'
+import donorTable from '../../interface/donorTable'
+
+
 
 const DonorTable: React.FC = () => {
   let [user, setUser] = useState([])
-  // let data: any = []
+  const [typeA, setTypeA] = useState([])
+  const [typeAB, setTypeAB] = useState([])
+  const [typeB, setTypeB] = useState([])
+  const [typeO, setTypeO] = useState([])
+
+  let userList: any = {
+    bloodA: [],
+    bloodB: [],
+    bloodAB: [],
+    bloodO: []
+  }
+  const url = 'http://localhost:8080/user/donor'
+  const { bloodA, bloodAB, bloodB, bloodO } = userList
+
   useEffect(() => {
-    // eslint-disable-next-line no-self-compare
-    axios.get('http://localhost:8080/user/donor')
-      .then(result => {
-        setUser(result.data)
+    const getData = async () => {
+      try {
+        const response = await axios(url)
+        setUser(response.data)
+
+        user.map(result => {
+          const { bloodType, firstName } = result
+          if (bloodType === 'A') {
+            bloodA.push(firstName)
+            setTypeA(bloodA)
+          } else if (bloodType === 'B') {
+            bloodB.push(firstName)
+            setTypeB(bloodB)
+          } else if (bloodType === 'AB') {
+            bloodAB.push(firstName)
+            setTypeAB(bloodAB)
+          } else if (bloodType === 'O') {
+            bloodO.push(firstName)
+            setTypeO(bloodO)
+          }
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+
+  }, [typeA, typeAB, typeB, typeO])
+
+
+  const [bloodSelect, setBloodSelect] = useState<string>('')
+  const [userSelect, setUserSelect] = useState([])
+  const handleSubmit = (e: SyntheticEvent) => {
+    e.preventDefault()
+    axios.post(url, { bloodType: bloodSelect })
+      .then((result: any) => {
+        setUserSelect(result.data)
+        console.log(userSelect);
 
       })
-      .catch(err => console.log("gagal render data table"))
-  }, [])
-
-  const bloodGroup: any = {
-    A: [],
-    B: [],
-    AB: [],
-    O: [],
+      .catch(err => console.log(err))
   }
-  const { A, B, AB, O } = bloodGroup
-
-  const tableData = () => {
-    user.map((result: any) => {
-      const { bloodType, firstName } = result
-      if (bloodType === 'A') {
-        A.push(firstName)
-        console.log(A)
-      } else if (bloodType === 'B') {
-        B.push(firstName)
-        console.log(B)
-      } else if (bloodType === 'AB') {
-        AB.push(firstName)
-        console.log(AB)
-      } else if (bloodType === 'O') {
-        O.push(firstName)
-        console.log(O)
-      }
-
-    })
-  }
-  const [bloodA, setBloodA] = useState([])
-  const [bloodAB, setBloodAB] = useState([])
-  const [bloodB, setBloodB] = useState([])
-  const [bloodO, setBloodO] = useState([])
-  useEffect(() => {
-    tableData()
-    setBloodA(A)
-    setBloodAB(AB)
-    setBloodB(B)
-    setBloodO(O)
-  }, [])
-
 
   return (
-    <section className='mt-[30px] flex flex-col justify-center items-center px-[20px]'>
-      <h1 className='uppercase font-bold mb-[20px] font-Quicksand'>Donor Table</h1>
-      <table className='table-auto '>
-
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Golongan Darah A</th>
-            <th>Golongan Darah AB</th>
-            <th>Golongan Darah B</th>
-            <th>Golongan Darah O</th>
+    <section className='mt-[30px]  px-[20px]'>
+      <h1 className='uppercase font-bold mb-[20px] font-Quicksand text-center'>Donor Table</h1>
+      <form onSubmit={handleSubmit}>
+        <select className='text-rose-600 my-5 focus:outline-none shadow-sm shadow-slate-200 rounded-sm p-[10px]' onChange={(e) => setBloodSelect(e.target.value)} name="blood-group" id="blood-group">
+          <option className='text-rose-500 font-Quicksand'>Pilih golongan darah</option>
+          <option className='text-rose-500' value="A">Golongan Darah A</option>
+          <option className='text-rose-500' value="B">Golongan Darah B</option>
+          <option className='text-rose-500' value="AB">Golongan Darah AB</option>
+          <option className='text-rose-500' value="O">Golongan Darah O</option>
+        </select>
+        <input className='shadow-sm shadow-slate-200 font-Quicksand rounded-sm w-[17%] p-[6px] mx-[10px] duration-150 hover:cursor-pointer hover:bg-rose-600' type="submit" value="Cari" />
+      </form>
+      <table className='table-auto rounded-md shadow-sm  shadow-slate-400 w-full'>
+        <thead className='bg-slate-200 w-full'>
+          <tr className=''>
+            <th className='p-[10px] mx-[10px]'>No</th>
+            <th className='p-[10px] mx-[10px]'>Nama</th>
+            <th className='p-[10px] mx-[10px]'>Umur</th>
+            <th className='p-[10px] mx-[10px]'>Email</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>{bloodA}</td>
-            <td>{bloodAB}</td>
-            <td>{bloodB}</td>
-            <td>{bloodO}</td>
-          </tr>
+        <tbody className='bg-slate-100'>
+          {
+            userSelect.map((result: any, index) => (
+              <tr key={index} className='text-center'>
+                <td>{index + 1}</td>
+                <td>{result.firstName + " " + result.lastName}</td>
+                <td>{result.age}</td>
+                <td>{result.email}</td>
+              </tr>
+            ))
+          }
         </tbody>
 
       </table>

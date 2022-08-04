@@ -38,7 +38,7 @@ const Register = () => {
       bloodType: bloodType
     })
       .then(res => {
-        console.log(res)
+
         navigate('/login')
       })
       .catch(err => console.log(err))
@@ -65,8 +65,8 @@ const Register = () => {
             <input className='w-[90%] h-[40px] my-[5px]  focus:outline-none bg-slate-100 px-[5px] py-10px] rounded-md ' onChange={(e) => setPassword(e.target.value)} type="password" name="" id="" placeholder='Password' />
 
             <div className=' w-[90%] my-[5px]'>
-              <span className='text-teal-800'>Tipe golongan darah :  </span>
               <select className='text-teal-600 focus:outline-none' name="blood-group" onChange={(e) => setBloodType(e.target.value)} id="blood-group">
+                <option className='text-teal-500'>Pilih tipe golongan darah</option>
                 <option className='text-teal-500' value="A">Golongan Darah A</option>
                 <option className='text-teal-500' value="B">Golongan Darah B</option>
                 <option className='text-teal-500' value="AB">Golongan Darah AB</option>

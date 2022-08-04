@@ -16,7 +16,7 @@ const Home: React.FC = () => {
         <Hero />
       </header>
 
-      <main className='bg-hero-pattern'>
+      <main className='bg-hero-pattern overflow-x-hidden'>
         <Card />
       </main>
       <footer></footer>
