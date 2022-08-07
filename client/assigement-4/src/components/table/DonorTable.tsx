@@ -2,7 +2,6 @@
 /* eslint-disable array-callback-return */
 import React, { SyntheticEvent, useEffect, useState } from 'react'
 import axios from 'axios'
-import donorTable from '../../interface/donorTable'
 
 
 

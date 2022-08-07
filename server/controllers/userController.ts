@@ -47,12 +47,13 @@ const loginUser = async (req: Request, res: Response) => {
   const userEmail = await User.findOne({ email: req.body.email })
   const userPassword: any = userEmail?.password
 
-  bcrypt.compare(req.body.password, userPassword, (err, result) => {
-    if (err) return console.log("ini error " + err)
 
-    if (userEmail && result) {
-      res.send(true)
-    }
+  bcrypt.compare(req.body.password, userPassword, (err, result) => {
+    if (err) return res.send(false)
+
+    res.send(result)
+
+
   })
 }
 

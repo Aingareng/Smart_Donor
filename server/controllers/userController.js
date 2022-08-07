@@ -54,10 +54,8 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userPassword = userEmail === null || userEmail === void 0 ? void 0 : userEmail.password;
     bcrypt_1.default.compare(req.body.password, userPassword, (err, result) => {
         if (err)
-            return console.log("ini error " + err);
-        if (userEmail && result) {
-            res.send(true);
-        }
+            return res.send(false);
+        res.send(result);
     });
 });
 exports.loginUser = loginUser;

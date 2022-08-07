@@ -75,8 +75,8 @@ const Register = () => {
             </div>
             <hr className='w-full border-teal-300 border-[1px] my-[5px]' />
             <input className='w-[90%] h-[40px] mt-[10px] text-white font-Quicksand my-[5px] bg-teal-500 px-[5px] rounded-md duration-200 ease-in hover:bg-teal-800 cursor-pointer' type="submit" value="Daftar" />
+            <button onClick={() => navigate('/login')} className='w-[30%]  h-[40px] mt-[10px] text-white font-Quicksand my-[5px] bg-teal-500 px-[5px] rounded-md duration-200 ease-in hover:bg-teal-800 cursor-pointer'>Login</button>
           </form>
-
         </div>
       </section>
     </HelmetProvider>
