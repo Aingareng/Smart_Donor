@@ -18,6 +18,21 @@ const Navbar: React.FC = () => {
     setBurger('w-[40px] right-[20px]  mobile-l:flex mobile-l:flex-col mobile-l:scale-50 mobile-l:top-[0px] sm:scale-75 sm:top-[10px] sm:flex sm:flex-col md:hidden hover:cursor-pointer lg:hidden xl:hidden 2xl:hidden')
     setClose('sm:absolute sm:hidden')
   }
+  const handleLogOut = () => {
+    const storage = localStorage.key(0) || ""
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm('Anda yakin?')) {
+      localStorage.clear()
+      navigate('/login')
+    } else {
+      navigate('/')
+
+    }
+
+
+
+
+  }
 
   useEffect(() => {
   }, [menu, burger, close])
@@ -28,7 +43,7 @@ const Navbar: React.FC = () => {
       <ul className={menu}>
         <li><a className='text-white' href="/">Home</a></li>
         <li onClick={() => navigate('/donor')} ><a className='text-white' href="/donor">Donatur</a></li>
-        <li><a className='text-white' href="/Contact">Contact</a></li>
+        <li onClick={handleLogOut} className='text-white'>Logout</li>
       </ul>
       <div onClick={handleMenu} className={burger}>
         <span className='block bg-white w-full rounded-md h-[5px] mb-[4px] '></span>

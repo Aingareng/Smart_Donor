@@ -29,10 +29,12 @@ const Login: React.FC = () => {
   }
 
   useEffect(() => {
+
     // TODO : Buat fitur logOut dengan memanfaatkan localStorage
     if (users === true) {
       localStorage.setItem("USER_STORAGE", JSON.stringify({ email: Email, password: Password }))
-      // const storage = JSON.parse(localStorage.getItem("USER_STORAGE") || "")
+
+
 
       navigate('/')
     } else if (users === false) {
