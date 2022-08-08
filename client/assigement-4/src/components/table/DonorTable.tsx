@@ -11,6 +11,7 @@ const DonorTable: React.FC = () => {
   const [typeAB, setTypeAB] = useState([])
   const [typeB, setTypeB] = useState([])
   const [typeO, setTypeO] = useState([])
+  const [table, setTable] = useState('table-auto rounded-md shadow-sm hidden shadow-slate-400 w-full')
 
   let userList: any = {
     bloodA: [],
@@ -32,15 +33,19 @@ const DonorTable: React.FC = () => {
           if (bloodType === 'A') {
             bloodA.push(firstName)
             setTypeA(bloodA)
+
           } else if (bloodType === 'B') {
             bloodB.push(firstName)
             setTypeB(bloodB)
+
           } else if (bloodType === 'AB') {
             bloodAB.push(firstName)
             setTypeAB(bloodAB)
+
           } else if (bloodType === 'O') {
             bloodO.push(firstName)
             setTypeO(bloodO)
+
           }
         })
       } catch (error) {
@@ -59,8 +64,7 @@ const DonorTable: React.FC = () => {
     axios.post(url, { bloodType: bloodSelect })
       .then((result: any) => {
         setUserSelect(result.data)
-        console.log(userSelect);
-
+        setTable('table-auto rounded-md shadow-sm shadow-slate-400 w-full')
       })
       .catch(err => console.log(err))
   }
@@ -78,7 +82,7 @@ const DonorTable: React.FC = () => {
         </select>
         <input className='shadow-sm shadow-slate-200 font-Quicksand rounded-sm w-[17%] p-[6px] mx-[10px] duration-150 hover:cursor-pointer hover:bg-rose-600' type="submit" value="Cari" />
       </form>
-      <table className='table-auto rounded-md shadow-sm  shadow-slate-400 w-full'>
+      <table className={table}>
         <thead className='bg-slate-200 w-full'>
           <tr className=''>
             <th className='p-[10px] mx-[10px]'>No</th>

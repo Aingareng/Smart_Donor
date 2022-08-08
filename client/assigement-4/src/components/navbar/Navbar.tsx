@@ -16,10 +16,9 @@ const Navbar: React.FC = () => {
   const closeButton = () => {
     setMenu('flex flex-col items-center justify-evenly w-[60%] h-[100vh] sm:translate-x-[100%] sm:absolute sm:right-0 sm:top-0 sm:flex-col sm:h-[100vh] sm:bg-opacity-50  sm:bg-rose-400  md:flex-row md:justify-around md:bg-opacity-0 md:h-[10vh] lg:flex-row lg:justify-around lg:h-[10vh] lg:bg-opacity-0 xl:flex-row xl:h-[10vh] xl:bg-opacity-0 2xl:flex-row 2xl:h-[10vh] 2xl:bg-opacity-0')
     setBurger('w-[40px] right-[20px]  mobile-l:flex mobile-l:flex-col mobile-l:scale-50 mobile-l:top-[0px] sm:scale-75 sm:top-[10px] sm:flex sm:flex-col md:hidden hover:cursor-pointer lg:hidden xl:hidden 2xl:hidden')
-    setClose('sm:absolute sm:hidden')
+    setClose('sm:absolute sm:hidden 2xl:hidden')
   }
   const handleLogOut = () => {
-    const storage = localStorage.key(0) || ""
     // eslint-disable-next-line no-restricted-globals
     if (confirm('Anda yakin?')) {
       localStorage.clear()

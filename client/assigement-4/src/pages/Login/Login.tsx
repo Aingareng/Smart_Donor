@@ -2,7 +2,6 @@ import React, { useState, useEffect, SyntheticEvent } from 'react'
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { parseJsonText } from 'typescript';
 
 // import login from '../../interface/login';
 
@@ -30,11 +29,8 @@ const Login: React.FC = () => {
 
   useEffect(() => {
 
-    // TODO : Buat fitur logOut dengan memanfaatkan localStorage
     if (users === true) {
       localStorage.setItem("USER_STORAGE", JSON.stringify({ email: Email, password: Password }))
-
-
 
       navigate('/')
     } else if (users === false) {
