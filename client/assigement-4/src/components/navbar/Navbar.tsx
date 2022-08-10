@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
   }, [menu, burger, close])
   return (
 
-    <nav className='bg-rose-300 z-50  shadow-gray-300 shadow-md h-[10vh]  ||  mobile-s:h-[10vh] mobile-m:h-[10vh] mobile-l:items-center mobile-l:h-[10vh]  ||  sm:sticky sm:top-0 sm:flex sm:items-center md:flex md:h-[10vh] md:items-center md:justify-around lg:h-[10vh] lg:flex lg:flex-row lg:items-center lg:justify-around xl:h-[10vh] xl:flex xl:justify-around xl:items-center 2xl:h-[10vh] 2xl:flex 2xl:flex-row 2xl:justify-around 2xl:items-center'>
+    <nav className='bg-rose-300 z-50  shadow-gray-300 shadow-md h-[10vh]  ||  mobile-s:h-[10vh] mobile-m:h-[10vh] mobile-l:items-center mobile-l:h-[10vh]  ||  sm:fixed sm:w-full sm:top-0 sm:flex sm:items-center md:flex md:h-[10vh] md:items-center md:justify-around lg:h-[10vh] lg:flex lg:flex-row lg:items-center lg:justify-around xl:h-[10vh] xl:flex xl:justify-around xl:items-center 2xl:h-[10vh] 2xl:flex 2xl:flex-row 2xl:justify-around 2xl:items-center'>
       <h1 className='leading-[60px] ml-[10px] uppercase text-white font-semibold   iphone:text-xl    mobile-s:leading-[70px] mobile-s:text-lg mobile-m:leading-[72px] mobile-m:text-md mobile-l:scale-100 mobile-l:leading-[72px] sm:text-md md:text-sm lg:text-md 2xl:scale-150'>smart <span className='text-red-500'>donor</span></h1>
       <ul className={menu}>
         <li><a className='text-white' href="/">Home</a></li>

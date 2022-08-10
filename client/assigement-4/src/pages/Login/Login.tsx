@@ -27,16 +27,17 @@ const Login: React.FC = () => {
       .catch(err => console.log(err))
   }
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (users === true) {
-      localStorage.setItem("USER_STORAGE", JSON.stringify({ email: Email, password: Password }))
+  //   if (users === true) {
+  //     localStorage.setItem("USER_STORAGE", JSON.stringify({ email: Email, password: Password }))
 
-      navigate('/')
-    } else if (users === false) {
-      alert("Email atau password salah")
-    }
-  }, [Email, Password, navigate, users])
+  //     navigate('/')
+  //   } else if (users === false) {
+
+  //     alert("Email atau password salah")
+  //   }
+  // }, [Email, Password, navigate, users])
 
 
   return (
