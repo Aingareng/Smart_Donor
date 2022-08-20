@@ -49,7 +49,7 @@ const loginUser = async (req: Request, res: Response) => {
 
 
   bcrypt.compare(req.body.password, userPassword, (err, result) => {
-    if (err) return res.send(false)
+    if (err) return res.send(result)
 
     res.send(result)
 

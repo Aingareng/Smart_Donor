@@ -16,7 +16,7 @@ const Login: React.FC = () => {
 
   const handleLogin = (e: SyntheticEvent) => {
     e.preventDefault()
-    axios.post('http://localhost:8080/user/login ', {
+    axios.post('http://api.smart-donor.local/user/login ', {
       "email": Email,
       "password": Password
     })
@@ -27,17 +27,14 @@ const Login: React.FC = () => {
       .catch(err => console.log(err))
   }
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   if (users === true) {
-  //     localStorage.setItem("USER_STORAGE", JSON.stringify({ email: Email, password: Password }))
+    if (users === true) {
+      localStorage.setItem("USER_STORAGE", JSON.stringify({ email: Email, password: Password }))
 
-  //     navigate('/')
-  //   } else if (users === false) {
-
-  //     alert("Email atau password salah")
-  //   }
-  // }, [Email, Password, navigate, users])
+      navigate('/')
+    }
+  }, [Email, Password, navigate, users])
 
 
   return (

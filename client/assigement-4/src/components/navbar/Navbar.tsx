@@ -41,8 +41,8 @@ const Navbar: React.FC = () => {
       <h1 className='leading-[60px] ml-[10px] uppercase text-white font-semibold   iphone:text-xl    mobile-s:leading-[70px] mobile-s:text-lg mobile-m:leading-[72px] mobile-m:text-md mobile-l:scale-100 mobile-l:leading-[72px] sm:text-md md:text-sm lg:text-md 2xl:scale-150'>smart <span className='text-red-500'>donor</span></h1>
       <ul className={menu}>
         <li><a className='text-white' href="/">Home</a></li>
-        <li onClick={() => navigate('/donor')} ><a className='text-white' href="/donor">Donatur</a></li>
-        <li onClick={handleLogOut} className='text-white'>Logout</li>
+        <li onClick={() => navigate('/donor')} className='text-white hover:cursor-pointer'>Donatur</li>
+        <li onClick={handleLogOut} className='text-white hover:cursor-pointer' >Logout</li>
       </ul>
       <div onClick={handleMenu} className={burger}>
         <span className='block bg-white w-full rounded-md h-[5px] mb-[4px] '></span>

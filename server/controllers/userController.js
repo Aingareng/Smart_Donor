@@ -54,7 +54,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userPassword = userEmail === null || userEmail === void 0 ? void 0 : userEmail.password;
     bcrypt_1.default.compare(req.body.password, userPassword, (err, result) => {
         if (err)
-            return res.send(false);
+            return res.send(result);
         res.send(result);
     });
 });

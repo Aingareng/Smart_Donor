@@ -17,7 +17,7 @@ const Card: React.FC = () => {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:8080/user ')
+    axios.get('http://api.smart-donor.local/user ')
       .then(res => {
         // eslint-disable-next-line array-callback-return
         res.data.map((result: any) => {
@@ -37,7 +37,7 @@ const Card: React.FC = () => {
   }, [BloodA, BloodAB, BloodB, BloodO])
 
   return (
-    <section className='box-border p-[15px] flex justify-center flex-wrap'>
+    <section className='box-border px-[15px] py-[30vh] flex justify-center flex-wrap'>
       <div className='bg-rose-200 shadow-md shadow-slate-200 rounded-md box-border || my-[5px] mx-[5px] w-[200px] h-[240px]'>
         <img src={bloodA} alt="blood A" />
         <hr className='border-red-500 border-dashed mb-2' />

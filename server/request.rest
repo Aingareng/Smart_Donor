@@ -1,4 +1,4 @@
-POST http://localhost:8080/user/register HTTP/1.1
+POST http://api.smart-donor.local/user/register HTTP/1.1
 Content-Type: application/json
 
 {
@@ -7,13 +7,13 @@ Content-Type: application/json
   "age":23,
   "email":"arham@gmail.com",
   "password":"arham",
-  "bloodType":"A"
+  "bloodType":"B"
 }
 
 
 
 ###
-POST http://localhost:8080/user/login HTTP/1.1
+POST http://api.smart-donor.local/user/login HTTP/1.1
 Content-Type: application/json
 
 {
@@ -24,15 +24,15 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/user/donor HTTP/1.1
+GET http://api.smart-donor.local/user/donor HTTP/1.1
 
 ###
-POST http://localhost:8080/user/donor HTTP/1.1
+POST http://api.smart-donor.local/user/donor HTTP/1.1
 Content-Type: application/json
 
 {
 
-  "bloodType":"O"
+  "bloodType":"B"
   
 
 }

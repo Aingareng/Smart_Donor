@@ -29,7 +29,7 @@ const Register = () => {
     }
     const { firstName, age, email, password, bloodType } = userRegis
 
-    axios.post('http://localhost:8080/user/register', {
+    axios.post('http://api.smart-donor.local/user/register', {
       firstName: firstName,
       lastName: LastName,
       age: age,
